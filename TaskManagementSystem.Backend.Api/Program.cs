@@ -1,8 +1,11 @@
+using TaskManagementSystem.Backend.Application;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+builder.SetUpApplication();
 
 var app = builder.Build();
 
