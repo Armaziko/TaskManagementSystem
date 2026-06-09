@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using TaskManagementSystem.Backend.Application.Models;
 
 namespace TaskManagementSystem.Backend.Api.Extensions
@@ -16,7 +17,7 @@ namespace TaskManagementSystem.Backend.Api.Extensions
             };
         }
 
-        public static IActionResult GetActionResultWithValue<TValue>(this ControllerBase controller, Result<TValue> result)
+        public static IActionResult GetActionResult<TValue>(this ControllerBase controller, Result<TValue> result)
         {
             return result.OperationStatus switch
             {
