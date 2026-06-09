@@ -10,6 +10,8 @@ namespace TaskManagementSystem.Backend.Domain.Entities
         public string FirstName { get; set; } = default!;
         public string LastName { get; set; } = default!;
         public string Email { get; set; } = default!;
+        public bool IsDeleted { get; set; } = false;
+        public DateTime DeletedAt { get; set; }
 
         // ნავიგაციის ფროფერთიები
         public List<Project> Projects { get; set; } = new();
