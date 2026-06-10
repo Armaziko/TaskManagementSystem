@@ -3,4 +3,5 @@
   <Project Path="TaskManagementSystem.Backend.Application/TaskManagementSystem.Backend.Application.csproj" />
   <Project Path="TaskManagementSystem.Backend.Domain/TaskManagementSystem.Backend.Domain.csproj" />
   <Project Path="TaskManagementSystem.Backend.Infrastructure/TaskManagementSystem.Backend.Infrastructure.csproj" />
+  <Project Path="TaskManagementSystem.Backend.Tests/TaskManagementSystem.Backend.Tests.csproj" Id="26c94e11-8e8a-4124-92ba-4c278bfd9404" />
 </Solution>
