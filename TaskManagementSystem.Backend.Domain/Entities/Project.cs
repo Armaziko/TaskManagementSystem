@@ -2,7 +2,7 @@
 
 namespace TaskManagementSystem.Backend.Domain.Entities
 {
-    public class Project : BaseEntity
+    public class Project : AggregateRoot
     {
         public Project(Guid id) : base(id)
         {
