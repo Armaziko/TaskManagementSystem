@@ -48,26 +48,48 @@ Repository layout (Follows clean architecture)
 Getting started (local)
 
 1.	Restore and build
+
 •	dotnet restore
+
 •	dotnet build
+
 2.	Apply database migrations (creates schema on configured SQL Server)
+
 •	From repository root:
+
 •	dotnet tool install --global dotnet-ef (if not installed)
+
 •	dotnet ef database update --project TaskManagementSystem.Backend.Infrastructure --startup-project TaskManagementSystem.Backend.Api
+
 •	Alternatively apply SQL from the Migrations folder manually.
+
 3.	Run the API
+
 •	dotnet run --project TaskManagementSystem.Backend.Api
+
 •	Open the Swagger/OpenAPI UI:
+
 •	In development the API config exposes OpenAPI. The project maps an OpenAPI json at /openapi/v1.json and registers Swagger UI in development.
+
 •	Typically browse to: https://localhost:{port}/swagger or the root path shown in the console.
 Testing
+
 •	Unit tests
+
 •	dotnet test TaskManagementSystem.Backend.Tests
+
 •	Current test coverage
+
 •	User handlers have unit tests (success, not found, pagination). Tests for Project, TaskItem and Comment handlers and for validation failure and exception paths are still required to meet full assignment test requirements.
+
 How to run and view Swagger locally
+
 1.	Build and run:
+
 •	dotnet run --project TaskManagementSystem.Backend.Api
+
 2.	Open browser to:
+
 •	https://localhost:{port}/ (Swagger UI)
+
 •	https://localhost:{port}/openapi/v1.json (raw OpenAPI JSON)
