@@ -1,31 +1,52 @@
-Task Management System (ASP.NET Core Web API)
-This repository implements a Task Management System built with ASP.NET Core Web API and EF Core.
+Task Management System (ASP.NET Core Web API).
+
+This repository implements a Task Management System built with ASP.NET Core Web API and EF Core. This project follows clean architecture, CQRS, repository/unit-of work patterns.
+
 The system supports managing Users, Projects, Tasks (TaskItem), and Comments with repository/unit-of-work patterns, FluentValidation,
 global exception handling middleware and OpenAPI (Swagger).
+
 Migrations for SQL Server are included.
 
 Key features
+
 •	Domain entities: User, Project, TaskItem, Comment
+
 •	Full CRUD handlers implemented in the Application layer (MediatR handlers)
+
 •	FluentValidation validators for commands and queries
+
 •	Repository<T> and UnitOfWork abstractions
+
 •	Pagination and filtering support in the repository and in user paging handler
+
 •	Global exception handling middleware
+
 •	Swagger/OpenAPI documentation
+
 •	EF Core migrations included (Infrastructure/Migrations)
+
 •	Unit test project with xUnit and Moq (partial coverage for User handlers)
+
 Prerequisites
+
 •	.NET 10 SDK
+
 •	SQL Server (local or remote) or SQL Server Express
-•	dotnet-ef (for applying migrations) — optional but recommended for local DB creation
-•	Visual Studio 2022/2026 or VS Code
-Repository layout (important folders)
+
+Repository layout (Follows clean architecture)
+
 •	TaskManagementSystem.Backend.Api — API project (Program.cs, Controllers)
+
 •	TaskManagementSystem.Backend.Application — Application layer (Handlers, Commands, Queries, Validators)
+
 •	TaskManagementSystem.Backend.Domain — Domain models and enums
+
 •	TaskManagementSystem.Backend.Infrastructure — EF Core DbContext, migrations, repository implementation
+
 •	TaskManagementSystem.Backend.Tests — Unit tests (xUnit + Moq). Note: currently contains user-handler tests; expand to cover all services.
+
 Getting started (local)
+
 1.	Restore and build
 •	dotnet restore
 •	dotnet build
