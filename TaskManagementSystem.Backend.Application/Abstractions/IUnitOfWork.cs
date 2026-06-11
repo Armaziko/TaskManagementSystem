@@ -7,7 +7,12 @@ namespace TaskManagementSystem.Backend.Application.Abstractions
     /// </summary>
     public interface IUnitOfWork : IDisposable
     {
-        public IRepository<T> Repository<T>() where T : AggregateRoot;
+        /// <summary>
+        /// This method returns a repository of type T if it is a valid DbSet.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IRepository<T> Repository<T>() where T : class;
         public int Commit();
         public Task<int> CommitAsync();
     }

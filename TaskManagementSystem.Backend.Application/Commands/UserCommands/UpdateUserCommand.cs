@@ -2,7 +2,7 @@
 using TaskManagementSystem.Backend.Application.Models;
 using TaskManagementSystem.Backend.Application.Models.DTOs;
 
-namespace TaskManagementSystem.Backend.Application.Commands
+namespace TaskManagementSystem.Backend.Application.Commands.UserCommands
 {
     public class UpdateUserCommand : IRequest<Result<UserDto>>
     {

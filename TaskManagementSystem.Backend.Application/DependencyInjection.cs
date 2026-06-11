@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using FluentValidation;
+using Microsoft.Extensions.Hosting;
 using TaskManagementSystem.Backend.Application.Extensions;
+using TaskManagementSystem.Backend.Application.Validators.UserValidators;
 
 namespace TaskManagementSystem.Backend.Application
 {
@@ -8,6 +10,7 @@ namespace TaskManagementSystem.Backend.Application
         public static void SetUpApplication(this IHostApplicationBuilder builder)
         {
             builder.SetUpMediatr();
+            builder.Services.AddValidatorsFromAssembly(typeof(UpdateUserValidator).Assembly);
         }
     }
 }

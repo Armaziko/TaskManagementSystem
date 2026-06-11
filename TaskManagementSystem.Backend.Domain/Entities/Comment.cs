@@ -14,5 +14,15 @@ namespace TaskManagementSystem.Backend.Domain.Entities
         // ნავიგაციის ფროფერთიები
         public TaskItem Task { get; set; } = default!;
         public User CommentMaker { get; set; } = default!;
+
+        public static Comment CreateProject(string content, Guid taskId, Guid commentMakerId)
+        {
+            return new Comment(Guid.NewGuid()) 
+            {
+                Content = content,
+                TaskId = taskId,
+                CommentMakerId = commentMakerId
+            };
+        }
     }
 }

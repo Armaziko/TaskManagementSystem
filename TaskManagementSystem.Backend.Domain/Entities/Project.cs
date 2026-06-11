@@ -13,5 +13,15 @@ namespace TaskManagementSystem.Backend.Domain.Entities
         // ნავიგაციის ფროფერთიები
         public User CreatorUser { get; set; } = default!;
         public List<TaskItem> Tasks { get; set; } = new();
+
+        public static Project CreateProject(Guid creatorUserId, string name, string description)
+        {
+            return new Project(Guid.NewGuid()) 
+            {
+                CreatorUserId = creatorUserId,
+                Name = name,
+                Description = description
+            };
+        }
     }
 }

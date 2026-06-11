@@ -6,6 +6,7 @@
         NOT_FOUND = 1,
         BAD_REQUEST = 2,
         FAILURE = 3,
-        INTERNAL_ERROR = 4
+        INTERNAL_ERROR = 4,
+        VALIDATION_FAILED = 5,
     }
 }

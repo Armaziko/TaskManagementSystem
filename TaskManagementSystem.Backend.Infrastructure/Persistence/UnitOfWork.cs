@@ -43,13 +43,13 @@ namespace TaskManagementSystem.Backend.Infrastructure.Persistence
             GC.SuppressFinalize(this);
         }
 
-        public IRepository<T> Repository<T>() where T : AggregateRoot
+        public IRepository<T> Repository<T>() where T : class
         {
             var type = typeof(T);
-            if (!this.repositories.ContainsValue(type))
+            if (!this.repositories.ContainsKey(type))
             {
                 var repoType = typeof(Repository<T>);
-                var instance = Activator.CreateInstance(repoType.MakeGenericType(type), _dbContext);
+                var instance = Activator.CreateInstance(repoType, _dbContext);
                 this.repositories.Add(type, instance);
             }
             return (IRepository<T>)repositories[type]!;

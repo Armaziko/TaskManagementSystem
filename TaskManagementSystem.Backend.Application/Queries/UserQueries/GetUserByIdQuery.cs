@@ -2,9 +2,9 @@
 using TaskManagementSystem.Backend.Application.Models;
 using TaskManagementSystem.Backend.Application.Models.DTOs;
 
-namespace TaskManagementSystem.Backend.Api.Controllers
+namespace TaskManagementSystem.Backend.Application.Queries.UserQueries
 {
-    public class GetUserById : IRequest<Result<UserDto>>
+    public class GetUserByIdQuery : IRequest<Result<UserDto>>
     {
         public Guid Id { get; set; }
     }

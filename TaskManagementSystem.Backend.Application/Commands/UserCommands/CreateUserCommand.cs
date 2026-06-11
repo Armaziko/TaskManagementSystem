@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using TaskManagementSystem.Backend.Application.Models;
 
-namespace TaskManagementSystem.Backend.Application.Commands
+namespace TaskManagementSystem.Backend.Application.Commands.UserCommands
 {
     public class CreateUserCommand : IRequest<Result>
     {

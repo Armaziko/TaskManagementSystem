@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TaskManagementSystem.Backend.Application.Commands;
+using TaskManagementSystem.Backend.Application.Commands.UserCommands;
 
 namespace TaskManagementSystem.Backend.Application.Extensions
 {

@@ -21,5 +21,17 @@ namespace TaskManagementSystem.Backend.Domain.Entities
         public User AssignedUser { get; set; } = default!;
         public User CreatorUser { get; set; } = default!;
         public List<Comment> Comments { get; set; } = new();
+
+        public static TaskItem CreateNew(Guid projectId, Guid creatorUserId, Guid assignedUserId, string title, string description)
+        {
+            return new TaskItem(Guid.NewGuid())
+            {
+                ProjectId = projectId,
+                CreatorUserId = creatorUserId,
+                AssignedUserId = assignedUserId,
+                Title = title,
+                Description = description
+            };
+        }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using TaskManagementSystem.Backend.Application.Abstractions;
-using TaskManagementSystem.Backend.Domain.Generics;
 
 namespace TaskManagementSystem.Backend.Infrastructure.Persistence
 {
-    public class Repository<T> : IRepository<T> where T : AggregateRoot
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly DbSet<T> set;
@@ -31,6 +31,25 @@ namespace TaskManagementSystem.Backend.Infrastructure.Persistence
         public async Task<T?> GetByIdAsync(Guid id)
         {
             return await this.set.FindAsync(id);
+        }
+
+        public async Task<IReadOnlyList<T>> GetPage(int page, int limitPerPage, Expression<Func<T, bool>>? logic = null)
+        {
+            if (logic is null)
+            {
+                return await this.set.Skip((page-1) * limitPerPage).Take(limitPerPage).AsNoTracking().ToListAsync(); // 1-based ari
+
+            }
+            return await this.set.Where(logic).Skip((page-1)*limitPerPage).Take(limitPerPage).AsNoTracking().ToListAsync();
+        }
+
+        public async Task<int> GetTotalCount(Expression<Func<T, bool>>? logic = null)
+        {
+            if (logic is null)
+            {
+                return await this.set.CountAsync();
+            }
+            return await this.set.Where(logic).CountAsync();
         }
 
         public void Remove(T item)

@@ -1,13 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagementSystem.Backend.Api.Extensions;
-using TaskManagementSystem.Backend.Application.Commands;
-using TaskManagementSystem.Backend.Application.Queries;
+using TaskManagementSystem.Backend.Application.Commands.UserCommands;
+using TaskManagementSystem.Backend.Application.Queries.UserQueries;
 
 namespace TaskManagementSystem.Backend.Api.Controllers
 {
     [ApiController]
-    [Route("/User")]
+    [Route("/user")]
     public class UserController : ControllerBase
     {
         private IMediator mediator { get; set; }
@@ -24,7 +24,7 @@ namespace TaskManagementSystem.Backend.Api.Controllers
             return this.GetActionResult(result);
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public async Task<IActionResult> GetAll()
         {
             var result = await this.mediator.Send(new GetAllUsersQuery()); // სუფთა CQRS-ს რომ მივყვეთ საჭიროა, რომ ხელით შევქმნათ აქ, რადგანაც არაფრის გადმოცემაა საჭირო
@@ -32,10 +32,18 @@ namespace TaskManagementSystem.Backend.Api.Controllers
             return this.GetActionResult(result);
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            var result = await this.mediator.Send(new GetUserById() { Id = id });
+            var result = await this.mediator.Send(new GetUserByIdQuery() { Id = id });
+
+            return this.GetActionResult(result);
+        }
+        [HttpGet("pages")]
+        public async Task<IActionResult> GetPage([FromQuery] GetUserPageQuery query)
+        {
+            var result = await this.mediator.Send(new GetUserPageQuery() 
+            { Page = query.Page, ItemLimit = query.ItemLimit, IsInProjects = query.IsInProjects, SearchName = query.SearchName, SortedByName = query.SortedByName});
 
             return this.GetActionResult(result);
         }
@@ -48,7 +56,7 @@ namespace TaskManagementSystem.Backend.Api.Controllers
             return this.GetActionResult(result);
         }
 
-        [HttpDelete("/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             var result = await this.mediator.Send(new DeleteUserCommand() { Id = id});
