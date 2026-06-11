@@ -90,6 +90,4 @@ How to run and view Swagger locally
 
 2.	Open browser to:
 
-•	https://localhost:{port}/ (Swagger UI)
-
-•	https://localhost:{port}/openapi/v1.json (raw OpenAPI JSON)
+  https://localhost:{port}/swagger/index.html
