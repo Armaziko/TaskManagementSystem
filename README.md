@@ -1,5 +1,9 @@
 Task Management System (ASP.NET Core Web API)
-This repository implements a Task Management System built with ASP.NET Core Web API and EF Core. The system supports managing Users, Projects, Tasks (TaskItem), and Comments with repository/unit-of-work patterns, FluentValidation, global exception handling middleware and OpenAPI (Swagger). Migrations for SQL Server are included.
+This repository implements a Task Management System built with ASP.NET Core Web API and EF Core.
+The system supports managing Users, Projects, Tasks (TaskItem), and Comments with repository/unit-of-work patterns, FluentValidation,
+global exception handling middleware and OpenAPI (Swagger).
+Migrations for SQL Server are included.
+
 Key features
 •	Domain entities: User, Project, TaskItem, Comment
 •	Full CRUD handlers implemented in the Application layer (MediatR handlers)
@@ -40,3 +44,9 @@ Testing
 •	dotnet test TaskManagementSystem.Backend.Tests
 •	Current test coverage
 •	User handlers have unit tests (success, not found, pagination). Tests for Project, TaskItem and Comment handlers and for validation failure and exception paths are still required to meet full assignment test requirements.
+How to run and view Swagger locally
+1.	Build and run:
+•	dotnet run --project TaskManagementSystem.Backend.Api
+2.	Open browser to:
+•	https://localhost:{port}/ (Swagger UI)
+•	https://localhost:{port}/openapi/v1.json (raw OpenAPI JSON)
