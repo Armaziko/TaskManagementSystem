@@ -3,7 +3,7 @@ Task Management System (ASP.NET Core Web API).
 This repository implements a Task Management System built with ASP.NET Core Web API and EF Core. This project follows clean architecture, CQRS, repository/unit-of work patterns.
 
 The system supports managing Users, Projects, Tasks (TaskItem), and Comments with repository/unit-of-work patterns, FluentValidation,
-global exception handling middleware and OpenAPI (Swagger).
+global exception handling middleware and OpenAPI (Swagger). The project allows for filtering, paginating and sorting for Users only.
 
 Migrations for SQL Server are included.
 
